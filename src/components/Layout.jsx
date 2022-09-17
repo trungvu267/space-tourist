@@ -3,19 +3,35 @@ import React from "react"
 import { GlobalStyles } from "twin.macro"
 import Nav from "./Nav"
 import tw from "twin.macro"
-import homeMobile from "../../public/assets/home/background-home-mobile.jpg"
-import homeTablet from "../../public/assets/home/background-home-tablet.jpg"
-import homeDesktop from "../../public/assets/home/background-home-desktop.jpg"
 import styled from "styled-components"
-const Layout = ({ children, ...rest }) => (
-  <div {...rest}>
-    <GlobalStyles />
-    <Wrapper url={[homeMobile, homeTablet, homeDesktop]}>
-      <Nav />
-      {children}
-    </Wrapper>
-  </div>
-)
+import { bgHome, bgCrew, bgDestination, bgTechnology } from "../assets/bg-image"
+
+const Layout = ({ children, page, ...rest }) => {
+  let urlBg = {}
+  switch (page) {
+    case "crew":
+      urlBg = bgCrew
+      break
+    case "technology":
+      urlBg = bgTechnology
+      break
+    case "destination":
+      urlBg = bgDestination
+      break
+    default:
+      urlBg = bgHome
+  }
+  return (
+    <div {...rest}>
+      <GlobalStyles />
+      <Wrapper url={urlBg}>
+        <Nav />
+        {children}
+      </Wrapper>
+    </div>
+  )
+}
+
 const Container = tw.div`min-h-screen bg-center bg-cover bg-no-repeat lg:p-6`
 const Wrapper = styled(Container)`
   background-image: url(${props => props.url[0]});

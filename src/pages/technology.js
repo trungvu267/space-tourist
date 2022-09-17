@@ -1,10 +1,11 @@
 import React from "react"
 import Layout from "../components/Layout"
+import PageName from "../components/PageName"
 
 const Technology = () => {
   return (
-    <Layout>
-      <div>Technology</div>
+    <Layout page="technology">
+      <PageName PageName="Technology" />
     </Layout>
   )
 }

@@ -1,11 +1,10 @@
 // src/pages/index.js
 import Layout from "./../components/Layout"
 import React from "react"
-import tw from "twin.macro"
 import Seo from "../components/seo"
 import FeatureSection from "../components/FeatureSection"
 const App = () => (
-  <Layout>
+  <Layout page="home">
     <FeatureSection />
   </Layout>
 )

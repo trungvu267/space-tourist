@@ -31,7 +31,7 @@ const Col2 = tw(Col)`flex items-end justify-center lg:justify-end`
 
 const SubTitle = tw.p`text-base md:text-xl text-space-primary`
 const Title = tw.h1`text-7xl md:text-space-xl text-space-white`
-const Content = tw.p`text-sm md:text-base text-space-primary max-w-sm`
+const Content = tw.p`text-sm md:text-base text-space-primary max-w-sm text-center lg:text-left`
 const CircleBtn = tw.button`text-xl md:text-space-sm w-36 h-36 md:w-60 md:h-60 lg:w-64 lg:h-64 rounded-full bg-space-white text-space-black `
 
 export default FeatureSection
