@@ -5,8 +5,9 @@ import Nav from "./Nav"
 import tw from "twin.macro"
 import styled from "styled-components"
 import { bgHome, bgCrew, bgDestination, bgTechnology } from "../assets/bg-image"
-
-const Layout = ({ children, page, ...rest }) => {
+import { useState, createContext } from "react"
+export const UserContext = createContext()
+const Layout = ({ children, page, data, ...rest }) => {
   let urlBg = {}
   switch (page) {
     case "crew":
@@ -21,14 +22,19 @@ const Layout = ({ children, page, ...rest }) => {
     default:
       urlBg = bgHome
   }
+  const [tabSelected, setTabSelected] = useState(data[0])
+  console.log(data)
+  console.log(tabSelected)
   return (
-    <div {...rest}>
-      <GlobalStyles />
-      <Wrapper url={urlBg}>
-        <Nav />
-        {children}
-      </Wrapper>
-    </div>
+    <UserContext.Provider value={{ data, tabSelected, setTabSelected }}>
+      <div {...rest}>
+        <GlobalStyles />
+        <Wrapper url={urlBg}>
+          <Nav />
+          {children}
+        </Wrapper>
+      </div>
+    </UserContext.Provider>
   )
 }
 

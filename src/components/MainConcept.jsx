@@ -1,28 +1,57 @@
-import React from "react"
+import React, { Children } from "react"
 import tw from "twin.macro"
+import { motion } from "framer-motion"
+import { AnimatePresence } from "framer-motion"
+import Name from "./Name"
+import Description from "./Description"
+import Distance from "./Distance"
+import Travel from "./Travel"
+import Image from "./Image"
+import { useContext } from "react"
+import { UserContext } from "./Layout"
+import { useEffect } from "react"
+import { DestinationTabs } from "./Tab"
 
-const MainConcept = ({ page }) => {
+const MainConcept = ({ col1, col2, tabElement }) => {
+  const { data, tabSelected, setTabSelected } = useContext(UserContext)
+  useEffect(() => {
+    setTabSelected(data[0])
+  }, [])
+
   return (
     <Container>
-      <Col>Image</Col>
+      <Col>
+        <AnimatePresence exitBeforeEnter>
+          <motion.div
+            key={tabSelected ? tabSelected.name : "empty"}
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -10, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {col1}
+            {/* <Image /> */}
+          </motion.div>
+        </AnimatePresence>
+      </Col>
       <Col1>
-        <div>dot attend</div>
-        <h2>Role</h2>
-        <h1>title</h1>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero
-          aliquid ut dicta esse reiciendis tempora amet. Architecto iure
-          deleniti porro tempore tenetur consequuntur molestiae laborum quas!
-          Doloribus incidunt amet explicabo.
-        </p>
-        <div>divider</div>
-        <div>distance</div>
-        <div>travel time</div>
+        {tabElement}
+        <AnimatePresence exitBeforeEnter>
+          <motion.div
+            key={tabSelected ? tabSelected.name : "empty"}
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -10, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {col2}
+          </motion.div>
+        </AnimatePresence>
       </Col1>
     </Container>
   )
 }
-const Container = tw.div`max-w-6xl min-h-screen bg-red-500 grid grid-rows-2`
+const Container = tw.div`max-w-6xl min-h-screen bg-red-500 grid grid-rows-2 mx-auto`
 const Col = tw.div`bg-blue-400`
 const Col1 = tw(Col)`bg-purple-400`
 export default MainConcept
