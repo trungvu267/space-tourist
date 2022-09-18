@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "TrungVu",
   "dependencies": {
-    "framer-motion": "^7.3.2",
+    "framer-motion": "^7.3.5",
     "gatsby": "^4.22.1",
     "gatsby-plugin-image": "^2.22.0",
     "gatsby-plugin-manifest": "^4.22.0",
@@ -16,7 +16,6 @@
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-slider": "^2.0.4",
     "styled-components": "^5.3.5",
     "tailwindcss": "^3.1.8",
     "twin.macro": "^2.8.2"
