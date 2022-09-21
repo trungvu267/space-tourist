@@ -51,7 +51,7 @@ const MainConcept = ({ col1, col2, tabElement }) => {
     </Container>
   )
 }
-const Container = tw.div`max-w-6xl min-h-screen bg-red-500 grid grid-rows-2 mx-auto`
+const Container = tw.div`max-w-6xl min-h-screen bg-red-500 grid grid-rows-2 lg:grid-cols-2 mx-auto`
 const Col = tw.div`bg-blue-400`
 const Col1 = tw(Col)`bg-purple-400`
 export default MainConcept
