@@ -2,17 +2,11 @@ import React, { Children } from "react"
 import tw from "twin.macro"
 import { motion } from "framer-motion"
 import { AnimatePresence } from "framer-motion"
-import Name from "./Name"
-import Description from "./Description"
-import Distance from "./Distance"
-import Travel from "./Travel"
-import Image from "./Image"
 import { useContext } from "react"
 import { UserContext } from "./Layout"
 import { useEffect } from "react"
-import { DestinationTabs } from "./Tab"
 
-const MainConcept = ({ col1, col2, tabElement }) => {
+const MainConcept = ({ col1, col2, tabElement, tabPosition }) => {
   const { data, tabSelected, setTabSelected } = useContext(UserContext)
   useEffect(() => {
     setTabSelected(data[0])
@@ -21,6 +15,8 @@ const MainConcept = ({ col1, col2, tabElement }) => {
   return (
     <Container>
       <Col>
+        {tabPosition === "technology" && tabElement}
+
         <AnimatePresence exitBeforeEnter>
           <motion.div
             key={tabSelected ? tabSelected.name : "empty"}
@@ -30,12 +26,12 @@ const MainConcept = ({ col1, col2, tabElement }) => {
             transition={{ duration: 0.2 }}
           >
             {col1}
-            {/* <Image /> */}
           </motion.div>
         </AnimatePresence>
+        {tabPosition === "crew" && tabElement}
       </Col>
       <Col1>
-        {tabElement}
+        {tabPosition === "destination" && tabElement}
         <AnimatePresence exitBeforeEnter>
           <motion.div
             key={tabSelected ? tabSelected.name : "empty"}
@@ -51,7 +47,7 @@ const MainConcept = ({ col1, col2, tabElement }) => {
     </Container>
   )
 }
-const Container = tw.div`max-w-6xl min-h-screen bg-red-500 grid grid-rows-2 lg:grid-cols-2 mx-auto`
-const Col = tw.div`bg-blue-400`
+const Container = tw.div`max-w-sm md:max-w-xl lg:max-w-6xl min-h-[80vh] bg-red-500 grid grid-rows-2 lg:grid-cols-2 mx-auto overflow-hidden`
+const Col = tw.div`bg-blue-400 h-[150%] mx-auto`
 const Col1 = tw(Col)`bg-purple-400`
 export default MainConcept

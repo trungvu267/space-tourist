@@ -5,6 +5,7 @@ import MainConcept from "../components/MainConcept"
 import data from "../../data.json"
 import Description from "../components/Description"
 import Name from "../components/Name"
+import Image from "../components/Image"
 import { TechnologyTab } from "../components/Tab"
 const Technology = () => {
   const { technology } = data
@@ -13,7 +14,8 @@ const Technology = () => {
       <PageName pageName="SPACE LAUNCH 101" pageNumber="03" />
 
       <MainConcept
-        col2={
+        col2={<Image />}
+        col1={
           <>
             <div>THE TERMINOLOGY…</div>
             <Name />
@@ -21,6 +23,7 @@ const Technology = () => {
           </>
         }
         tabElement={<TechnologyTab />}
+        tabPosition="technology"
       />
     </Layout>
   )

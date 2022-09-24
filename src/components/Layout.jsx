@@ -38,7 +38,7 @@ const Layout = ({ children, page, data, ...rest }) => {
   )
 }
 
-const Container = tw.div`min-h-screen bg-center bg-cover bg-no-repeat lg:p-6`
+const Container = tw.div`min-h-screen lg:max-h-screen bg-center bg-cover bg-no-repeat lg:p-6 `
 const Wrapper = styled(Container)`
   background-image: url(${props => props.url[0]});
   @media (min-width: 768px) {
